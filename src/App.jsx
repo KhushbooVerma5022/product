@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/product">
         {!isAdminRoute && <NavBar category={productCategory} />}
         <Routes>
           <Route path="/products/:category" element={<Products />} />
