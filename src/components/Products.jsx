@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Products() {
     const [products, setproducts] = useState([]);
+    const [skip, setskip] = useState(0);
+    const [totalProducts, settotalProducts] = useState(0);
     const navigate = useNavigate();
     const { category } = useParams();
 
@@ -11,7 +13,7 @@ export default function Products() {
     const search = searchParams.get('q');
 
     const fetchData = async () => {
-        let url = `https://dummyjson.com/products`;
+        let url = `https://dummyjson.com/products?limit=20&skip=${skip}`;
         if (category) {
             url = `https://dummyjson.com/products/category/${category}`;
         } else if (search) {
@@ -21,33 +23,35 @@ export default function Products() {
         const data = await fetch(url);
         let parsedData = await data.json();
         setproducts(parsedData.products);
+        settotalProducts(parsedData.total)
     }
 
     useEffect(() => {
         fetchData();
-    }, [category, search])
+    }, [category, search, skip])
 
-    // const addProduct = () => {
-    //     fetch('https://dummyjson.com/products/add', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newProduct)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log('Product added:', data);
-    //             setproducts(prev => [...prev, data]);
-    //         })
-    //         .catch(err => console.error('product Error:', err));
-    // };
+    const handlePrevClick = () => {
+        setskip((prevSkip) => {
+            const newSkip = prevSkip > 0 ? prevSkip - 20 : 0;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return newSkip;
+        });
+    }
+
+    const handleNextClick = () => {
+        setskip((prevSkip) => {
+            const newSkip = prevSkip + 20;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return newSkip;
+        });
+    }
 
 
     return (
         <>
-            <div className="p-6 bg-gray-100 min-h-screen mt-10">
-                {/* <button onClick={addProduct} className='border'>Add New Product</button> */}
-                <h1 className="text-4xl font-bold mb-6 text-center text-black m-4">Products</h1>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 mx-20'>
+            <div className="pt-6 bg-gray-100 min-h-screen mt-10">
+                <h1 className="text-2xl font-semibold sm:text-4xl sm:font-bold mb-6 text-center text-black m-4">Products</h1>
+                <div className='grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-20 sm:mx-20 mx-10'>
                     {products.map((product) => {
                         return (
                             <div
@@ -63,6 +67,10 @@ export default function Products() {
                             </div>
                         )
                     })}
+                </div>
+                <div className='container flex justify-between mt-2'>
+                    <button type='button' disabled={skip === 0} onClick={handlePrevClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >&larr; Previous</button>
+                    <button type='button' disabled={skip + 20 >= totalProducts} onClick={handleNextClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >next &rarr;</button>
                 </div>
             </div>
         </>

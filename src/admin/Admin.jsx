@@ -60,7 +60,7 @@ export default function Admin() {
 
                 if (data.accessToken) {
                     navigate('/admin/products');
-                    sessionStorage.setItem("accessToken",data.accessToken)
+                    sessionStorage.setItem("accessToken", data.accessToken)
                 } else {
                     throw new Error(data.message)
                 }
@@ -72,13 +72,17 @@ export default function Admin() {
 
     return (
         <>
-            <div className="min-h-screen bg-gray-200 flex items-center justify-center">
-                <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm h-[380px]">
-                    <h2 className="text-3xl font-bold text-center text-gray-700 mb-6">Admin Login</h2>
+            <div className="min-h-screen bg-gray-200 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+                <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-sm h-[420px] sm:h-[400px]">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-700 mb-6 ">
+                        Admin Login
+                    </h2>
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label htmlFor="username" className="block text-sm font-medium text-gray-600">Username</label>
+                            <label htmlFor="username" className="block text-sm font-medium text-gray-600">
+                                Username
+                            </label>
                             <input
                                 type="text"
                                 name="username"
@@ -91,7 +95,9 @@ export default function Admin() {
                         </div>
 
                         <div className="mb-6">
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-600">
+                                Password
+                            </label>
                             <input
                                 type="password"
                                 name="password"
@@ -112,6 +118,7 @@ export default function Admin() {
                     </form>
                 </div>
             </div>
+
         </>
     )
 }
