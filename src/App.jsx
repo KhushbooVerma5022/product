@@ -23,7 +23,7 @@ function App() {
     fetchCategory();
   }, [])
 
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminRoute = location.pathname.startsWith('/product/admin');
 
   return (
     <>

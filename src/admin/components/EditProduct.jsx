@@ -46,7 +46,7 @@ export default function EditProduct() {
     return (
         <>
             <div className="max-w-4xl mx-auto p-6">
-                <h2 className="text-2xl font-bold text-teal-700 text-center mb-6">Update Product</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl  font-bold text-teal-700 text-center mb-6">Update Product</h2>
                 <form onSubmit={handleSubmit} className="space-y-6 bg-white border p-6 rounded-xl border-gray-300 shadow-2xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="col-span-1">

@@ -10,7 +10,7 @@ const ProductList = () => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [productId, setproductId] = useState(null)
     const [skip, setskip] = useState(0);
-    const [totalProducts, settotalProducts] = useState(0)
+    const [totalProducts, settotalProducts] = useState(0);
 
     const navigate = useNavigate();
 
@@ -88,21 +88,21 @@ const ProductList = () => {
     return (
         <>
             <div className="max-w-6xl mx-auto px-4 mt-2">
-                <h2 className="text-2xl font-semibold mb-2">Products List</h2>
+                <h2 className="text-xl md:text-2xl font-semibold mb-2">Products List</h2>
                 <div className="overflow-x-auto border border-g ray-500 rounded-lg p-3">
-                    <div className="w-full gap-18 mb-3 flex">
-                        <div className="md:w-1/3 flex items-center bg-gray-100 border border-gray-300 rounded-lg text-sm text-gray-950 focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out hover:border-blue-300">
+                    <div className="w-full gap-5 sm:gap-18 mb-3 flex">
+                        <div className="w-48 h-10 sm:h-full md:w-1/3 flex items-center bg-gray-100 border border-gray-300 rounded-lg text-sm text-gray-950 focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out hover:border-blue-300">
                             <input
                                 type="search"
                                 id="simple-search"
                                 value={search}
                                 onChange={(e) => setsearch(e.target.value)}
-                                className="block w-full py-2 pl-10 pr-2 focus:outline-none"
-                                placeholder="Search Products..."
+                                className="block w-full  md:py-2 md:pl-10 md:pr-2 focus:outline-none"
+                                placeholder="Search..."
                                 onKeyDown={handleKeyDown}
                             />
                             <button
-                                className="px-4 py-2 cursor-pointer"
+                                className="md:px-4 md:py-2 cursor-pointer"
                                 onClick={handleSearch}
                             ><IoSearch /></button>
                         </div>
@@ -120,34 +120,34 @@ const ProductList = () => {
                         </div>
 
                         <button
-                            className="flex items-center bg-green-700 hover:bg-green-600 cursor-pointer text-white font-semibold py-2 px-6 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition duration-300"
+                            className="flex items-center bg-green-700 h-9 text-[10px] md:text-[14px] lg:text-[16px]  hover:bg-green-600 cursor-pointer text-white font-semibold p-1 p-4 sm:px-6 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition duration-300"
                             onClick={() => navigate("/admin/addProduct")}
                         >
-                            <IoAdd className="mr-2 text-xl" /> Add Product
+                            <IoAdd className="sm:mr-2" /> Add Product
                         </button>
                     </div>
 
                     <table className="min-w-full bg-white auto">
                         <thead className="bg-gray-100">
                             <tr>
-                                <th className="py-[5px] px-4 border-b border-gray-400 text-left">ID</th>
-                                <th className="py-[5px] px-4 border-b border-gray-400 text-left">Title</th>
-                                <th className="py-[5px] px-4 border-b border-gray-400 text-left">Price</th>
-                                <th className="py-[5px] px-4 border-b border-gray-400 text-left">Category</th>
-                                <th className="py-[5px] px-4 border-b border-gray-400 text-left">Actions</th>
+                                <th className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 text-left">ID</th>
+                                <th className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 text-left">Title</th>
+                                <th className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 text-left">Price</th>
+                                <th className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 text-left">Category</th>
+                                <th className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 text-left">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {products.map((product) => (
                                 <tr key={product.id} className="hover:bg-gray-50">
-                                    <td className="py-[5px] px-4 border-b border-gray-400">{product.id}</td>
-                                    <td className="py-[5px] px-4 border-b border-gray-400">{product.title}</td>
-                                    <td className="py-[5px] px-4 border-b border-gray-400">${product.price}</td>
-                                    <td className="py-[5px] px-4 border-b border-gray-400">{product.category}</td>
-                                    <td className="py-[5px] px-4 border-b border-gray-400 space-x-2">
+                                    <td className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400">{product.id}</td>
+                                    <td className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400">{product.title}</td>
+                                    <td className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400">${product.price}</td>
+                                    <td className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400">{product.category}</td>
+                                    <td className="py-[3px] px-2 sm:py-[5px] sm:px-4 text-sm sm:text-md border-b border-gray-400 sm:space-x-2 space-y-1">
                                         <button
                                             onClick={() => navigate(`/admin/editProduct/${product.id}`)}
-                                            className="bg-lime-800 hover:bg-lime-600 text-white px-3 py-1 rounded text-sm cursor-pointer"
+                                            className="bg-lime-800 hover:bg-lime-600 text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm cursor-pointer"
                                         >
                                             Edit
                                         </button>
@@ -156,7 +156,7 @@ const ProductList = () => {
                                                 setShowConfirm(true);
                                                 setproductId(product.id);
                                             }}
-                                            className="bg-teal-800 hover:bg-teal-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
+                                            className="bg-teal-800 hover:bg-teal-700 text-white px-2 sm:px-3 py-1 rounded text-[10px] sm:text-sm cursor-pointer"
                                         >
                                             Delete
                                         </button>
@@ -167,8 +167,8 @@ const ProductList = () => {
                     </table>
                 </div>
                 <div className='container flex justify-between mt-2'>
-                    <button type='button' disabled={skip === 0} onClick={handlePrevClick} className='bg-gray-600 text-white text-[12px] px-2 pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >&larr; Previous</button>
-                    <button type='button' disabled={skip + 10 >= totalProducts} onClick={handleNextClick} className='bg-gray-600 text-white text-[12px] px-2 pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >next &rarr;</button>
+                    <button type='button' disabled={skip === 0} onClick={handlePrevClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >&larr; Previous</button>
+                    <button type='button' disabled={skip + 10 >= totalProducts} onClick={handleNextClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >next &rarr;</button>
                 </div>
             </div>
 
