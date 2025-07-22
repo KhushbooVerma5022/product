@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import NavBar from './components/Navbar'
 import Products from './components/Products'
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
 import AdminLayout from './admin/AdminLayout';
 import AddProduct from './admin/components/AddProduct';
@@ -27,8 +27,8 @@ function App() {
 
   return (
     <>
-      <HashRouter>
-        {isAdminRoute && <NavBar category={productCategory} />}
+      <BrowserRouter basename="/product">
+        {!isAdminRoute && <NavBar category={productCategory} />}
         <Routes>
           <Route path="/products/:category" element={<Products />} />
           <Route path="/products" element={<Products />} />
@@ -40,7 +40,7 @@ function App() {
           <Route path="/admin/addProduct" element={<AddProduct />} />
           <Route path="/admin/editProduct/:id" element={<EditProduct />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   )
 }

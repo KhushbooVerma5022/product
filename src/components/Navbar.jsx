@@ -69,6 +69,11 @@ export default function Navbar({ category }) {
                                     <option key={idx}>{cat}</option>
                                 ))}
                             </select>
+
+                            <button onClick={() => navigate(`/admin`)} className='bg-green-700 h-9 text-[10px] md:text-[14px] lg:text-[16px]  hover:bg-green-600 cursor-pointer text-white font-semibold p-1 p-4 sm:px-6 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transition duration-300'>
+                                Admin
+                            </button>
+
                         </div>
 
                         <div className="md:hidden">
