@@ -117,6 +117,11 @@ export default function Navbar({ category }) {
                                 <option key={idx}>{cat}</option>
                             ))}
                         </select>
+                         <button
+                                onClick={() => navigate(`/admin`)}
+                                className='bg-slate-600 w-full hover:bg-slate-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2'>
+                                Admin
+                            </button>
                     </div>
                 )}
             </nav>

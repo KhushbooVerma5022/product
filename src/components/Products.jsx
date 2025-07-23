@@ -68,7 +68,7 @@ export default function Products() {
                         )
                     })}
                 </div>
-                <div className='container flex justify-between m-2'>
+                <div className='container flex justify-between mt-2 mb-2'>
                     <button type='button' disabled={skip === 0} onClick={handlePrevClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >&larr; Previous</button>
                     <button type='button' disabled={skip + 20 >= totalProducts} onClick={handleNextClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >next &rarr;</button>
                 </div>
