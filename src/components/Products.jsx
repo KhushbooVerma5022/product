@@ -68,10 +68,33 @@ export default function Products() {
                         )
                     })}
                 </div>
-                <div className='container flex justify-between mt-2 mb-2'>
-                    <button type='button' disabled={skip === 0} onClick={handlePrevClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >&larr; Previous</button>
-                    <button type='button' disabled={skip + 20 >= totalProducts} onClick={handleNextClick} className='bg-gray-600 text-white text-[8px] md:text-[12px] px-1  md:px-2 md:pb-1 rounded-sm cursor-pointer disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed' >next &rarr;</button>
+                <div className="container mx-auto px-4 mt-4 mb-4">
+                    <div className="flex items-center justify-between bg-white p-3">
+                        
+                        <button
+                            type="button"
+                            disabled={skip === 0}
+                            onClick={handlePrevClick}
+                            className="bg-gray-700 text-white text-sm px-4 py-2 rounded-md shadow-sm hover:bg-gray-800 disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed transition"
+                        >
+                            &larr; Previous
+                        </button>
+
+                        <span className="text-gray-600 text-sm font-medium">
+                            Page {Math.floor(skip / 20) + 1} of {Math.ceil(totalProducts / 20)}
+                        </span>
+
+                        <button
+                            type="button"
+                            disabled={skip + 20 >= totalProducts}
+                            onClick={handleNextClick}
+                            className="bg-gray-700 text-white text-sm px-4 py-2 rounded-md shadow-sm hover:bg-gray-800 disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed transition"
+                        >
+                            Next &rarr;
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </>
     )
