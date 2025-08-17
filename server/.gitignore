@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+.env
+
+# Build output
+dist/
+build/
+
+# OS-specific files
+.DS_Store
+
+# Editor configs
+.vscode/
+.idea/
+*.suo
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage/
