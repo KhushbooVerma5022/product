@@ -4,12 +4,25 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
+// Serve static files from React dist
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
 const product = require('./routes/product')
 
 app.use(cors());
 app.use(express.json());
-app.use('/', product);
+app.use('/api/products', product);
 app.use('/public/images', express.static(path.join(__dirname, 'public/images')));
+
+// Example API route
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Express!" });
+});
+
+// // Catch-all route for client-side routing
+app.get('/{*any}', (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+});
 
 const port = 2000;
 app.listen(port, () => {

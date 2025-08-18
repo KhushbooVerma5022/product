@@ -11,7 +11,7 @@ export default function ProductDetails() {
     const [productCategory, setproductCategory] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:2000/products/${id}`)
+        fetch(`http://localhost:2000/api/products/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setproduct(data)
@@ -23,7 +23,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         if (category) {
-            fetch(`http://localhost:2000/products/category/${category}`)
+            fetch(`http://localhost:2000/api/products/products/category/${category}`)
                 .then(res => res.json())
                 .then(data => setproductCategory(data));
         }

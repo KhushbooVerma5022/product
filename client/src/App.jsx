@@ -18,7 +18,7 @@ function App() {
   const [productCategory, setproductCategory] = useState([]);
 
   const fetchCategory = async () => {
-    const url = 'http://localhost:2000/products/category-list';
+    const url = 'http://localhost:2000/api/products/products/category-list';
     const data = await fetch(url);
     const parsedData = await data.json();
 
