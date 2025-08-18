@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import buildAPIUrls from '../../utils/helper';
 
 export default function EditProduct() {
     const { id } = useParams();
@@ -23,7 +24,7 @@ export default function EditProduct() {
     })
 
     useEffect(() => {
-        fetch(`http://localhost:2000/products/${id}`)
+        fetch(buildAPIUrls(`/products/${id}`))
             .then(res => res.json())
             .then(data => setproduct(data))
     }, [id])
@@ -46,7 +47,7 @@ export default function EditProduct() {
         e.preventDefault();
         const token = sessionStorage.getItem('token');
 
-        let url = `http://localhost:2000/products/${id}`;
+        let url = buildAPIUrls(`/products/${id}`);
 
         const formData = new FormData();
         formData.append('title', product.title);

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import buildAPIUrls from '../../utils/helper';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function Header() {
     console.log(token);
     
 
-    fetch('http://localhost:2000/seller', {
+    fetch(buildAPIUrls('/seller'), {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

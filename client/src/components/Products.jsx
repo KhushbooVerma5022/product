@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import buildAPIUrls from '../utils/helper';
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -15,12 +16,12 @@ export default function Products() {
     const limit = 15;
 
     const fetchData = async () => {
-        let url = `http://localhost:2000/api/products/products?limit=${limit}&page=${page}`;
+        let url = buildAPIUrls(`/api/products/products?limit=${limit}&page=${page}`);
 
         if (category) {
-            url = `http://localhost:2000/api/products/products/category/${category}?limit=${limit}&page=${page}`;
+            url = buildAPIUrls(`/api/products/products/category/${category}?limit=${limit}&page=${page}`);
         } else if (search) {
-            url = `http://localhost:2000/api/products/products/search?title=${search}&limit=${limit}&page=${page}`;
+            url = buildAPIUrls(`/api/products/products/search?title=${search}&limit=${limit}&page=${page}`);
         }
 
         try {

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import buildAPIUrls from "../../utils/helper";
 
 export default function AddProduct() {
     const [productData, setproductData] = useState({
@@ -40,7 +41,7 @@ export default function AddProduct() {
         e.preventDefault();
         const token = sessionStorage.getItem('token');
 
-        let url = 'http://localhost:2000/products/create';
+        let url = buildAPIUrls('/products/create');
 
         const formData = new FormData();
         formData.append('title', productData.title);

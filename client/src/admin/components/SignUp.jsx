@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import SellerNavbar from '../SellerNavbar';
+import buildAPIUrls from '../../utils/helper';
 
 function SignUp() {
     const [sellerData, setsellerData] = useState({
@@ -20,7 +21,7 @@ function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let url = 'http://localhost:2000/admin/create';
+        let url = buildAPIUrls('/admin/create');
 
         fetch(url, {
             method: 'POST',

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { FaStar } from "react-icons/fa";
 import ProductItem from "./ProductItem";
+import buildAPIUrls from "../utils/helper";
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -11,7 +12,7 @@ export default function ProductDetails() {
     const [productCategory, setproductCategory] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:2000/api/products/products/${id}`)
+        fetch(buildAPIUrls(`/api/products/products/${id}`))
             .then(res => res.json())
             .then(data => {
                 setproduct(data)
@@ -23,7 +24,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         if (category) {
-            fetch(`http://localhost:2000/api/products/products/category/${category}`)
+            fetch(buildAPIUrls(`/api/products/products/category/${category}`))
                 .then(res => res.json())
                 .then(data => setproductCategory(data));
         }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SellerNavbar from '../SellerNavbar';
+import buildAPIUrls from '../../utils/helper';
 
 export default function SignIn() {
     const [formData, setformData] = useState({
@@ -23,7 +24,7 @@ export default function SignIn() {
     }, [])
 
     const handleLogin = (sellername, password) => {
-        fetch('http://localhost:2000/admin/login', {
+        fetch(buildAPIUrls('/admin/login'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sellername, password })
@@ -53,7 +54,7 @@ export default function SignIn() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:2000/admin/login', {
+        fetch(buildAPIUrls('/admin/login'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

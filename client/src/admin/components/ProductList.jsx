@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
+import buildAPIUrls from '../../utils/helper';
 
 const ProductList = () => {
     const [products, setproducts] = useState([])
@@ -18,13 +19,13 @@ const ProductList = () => {
 
     const fetchData = async () => {
         const token = sessionStorage.getItem('token');
-        let url = `http://localhost:2000/seller/products?limit=${limit}&page=${page}`;
+        let url = buildAPIUrls(`/seller/products?limit=${limit}&page=${page}`);
 
         if (selectedCategory) {
-            url = `http://localhost:2000/seller/products/${selectedCategory}`;
+            url = buildAPIUrls(`/seller/products/${selectedCategory}`);
         }
         else if (search) {
-            url = `http://localhost:2000/seller/products/search?title=${search}`;
+            url = buildAPIUrls(`/seller/products/search?title=${search}`);
         }
 
         try {
@@ -55,7 +56,7 @@ const ProductList = () => {
 
 
     const productCategory = async () => {
-        let url = 'http://localhost:2000/products/category-list';
+        let url = buildAPIUrls('/products/category-list');
         const data = await fetch(url);
         let parsedData = await data.json();
         setcategory(parsedData)
@@ -88,7 +89,7 @@ const ProductList = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await fetch(`http://localhost:2000/products/${id}`, {
+            const res = await fetch(buildAPIUrls(`/products/${id}`), {
                 method: 'DELETE',
             });
 

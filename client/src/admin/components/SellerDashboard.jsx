@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import buildAPIUrls from "../../utils/helper";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Dashboard() {
@@ -11,7 +12,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function load() {
       const token = sessionStorage.getItem("token");
-      const res = await fetch("http://localhost:2000/admin/dashboard/products", {
+      const res = await fetch(buildAPIUrls("/admin/dashboard/products"), {
         headers: { Authorization: `Bearer ${token}` },
       });
       const json = await res.json();

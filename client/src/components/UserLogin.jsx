@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import buildAPIUrls from '../utils/helper';
 
 export default function AuthForm() {
     const [isSignup, setIsSignup] = useState(false);
@@ -35,8 +36,8 @@ export default function AuthForm() {
             };
 
         const url = isSignup
-            ? 'http://localhost:2000/api/products/user/signup'
-            : 'http://localhost:2000/api/products/user/login';
+            ? buildAPIUrls('/api/products/user/signup')
+            : buildAPIUrls('/api/products/user/login');
 
         try {
             const response = await fetch(url, {

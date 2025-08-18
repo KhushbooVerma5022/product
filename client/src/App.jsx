@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import NavBar from './components/Navbar';
 import Products from './components/Products';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
@@ -13,12 +14,13 @@ import UserLogin from './components/UserLogin';
 import Dashboard from './admin/components/SellerDashboard';
 import ProductList from './admin/components/ProductList';
 import ProtectedRoute from './admin/ProtectedRoute';
+import buildAPIUrls from './utils/helper';
 
 function App() {
   const [productCategory, setproductCategory] = useState([]);
 
   const fetchCategory = async () => {
-    const url = 'http://localhost:2000/api/products/products/category-list';
+    const url = buildAPIUrls('/api/products/products/category-list');
     const data = await fetch(url);
     const parsedData = await data.json();
 
