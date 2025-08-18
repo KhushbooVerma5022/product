@@ -10,7 +10,7 @@ import Admin from './admin/Admin';
 import SignIn from './admin/components/SignIn';
 import SignUp from './admin/components/SignUp';
 import UserLogin from './components/UserLogin';
-import Dashboard from './admin/components/dashboard';
+import Dashboard from './admin/components/SellerDashboard';
 import ProductList from './admin/components/ProductList';
 import ProtectedRoute from './admin/ProtectedRoute';
 
