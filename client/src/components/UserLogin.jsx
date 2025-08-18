@@ -35,8 +35,8 @@ export default function AuthForm() {
             };
 
         const url = isSignup
-            ? 'http://localhost:2000/user/signup'
-            : 'http://localhost:2000/user/login';
+            ? 'http://localhost:2000/api/products/user/signup'
+            : 'http://localhost:2000/api/products/user/login';
 
         try {
             const response = await fetch(url, {
