@@ -11,7 +11,7 @@ const product = require('./routes/product')
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/products', product);
+app.use('/api', product);
 app.use('/public/images', express.static(path.join(__dirname, 'public/images')));
 
 // Example API route

@@ -20,7 +20,7 @@ function App() {
   const [productCategory, setproductCategory] = useState([]);
 
   const fetchCategory = async () => {
-    const url = buildAPIUrls('/api/products/products/category-list');
+    const url = buildAPIUrls('/products/category-list');
     const data = await fetch(url);
     const parsedData = await data.json();
 
@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/product">
+    <BrowserRouter>
       <AppContent category={productCategory} />
     </BrowserRouter>
   );

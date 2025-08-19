@@ -16,12 +16,12 @@ export default function Products() {
     const limit = 15;
 
     const fetchData = async () => {
-        let url = buildAPIUrls(`/api/products/products?limit=${limit}&page=${page}`);
+        let url = buildAPIUrls(`/products?limit=${limit}&page=${page}`);
 
         if (category) {
-            url = buildAPIUrls(`/api/products/products/category/${category}?limit=${limit}&page=${page}`);
+            url = buildAPIUrls(`/products/category/${category}?limit=${limit}&page=${page}`);
         } else if (search) {
-            url = buildAPIUrls(`/api/products/products/search?title=${search}&limit=${limit}&page=${page}`);
+            url = buildAPIUrls(`/products/search?title=${search}&limit=${limit}&page=${page}`);
         }
 
         try {

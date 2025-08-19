@@ -12,7 +12,7 @@ export default function ProductDetails() {
     const [productCategory, setproductCategory] = useState("");
 
     useEffect(() => {
-        fetch(buildAPIUrls(`/api/products/products/${id}`))
+        fetch(buildAPIUrls(`/products/${id}`))
             .then(res => res.json())
             .then(data => {
                 setproduct(data)
@@ -24,7 +24,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         if (category) {
-            fetch(buildAPIUrls(`/api/products/products/category/${category}`))
+            fetch(buildAPIUrls(`/products/category/${category}`))
                 .then(res => res.json())
                 .then(data => setproductCategory(data));
         }
