@@ -4,10 +4,7 @@ import Sidebar from "./Sidebar";
 export default function AdminLayout() {
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar fixed width and fixed positioning handled inside Sidebar */}
       <Sidebar />
-
-      {/* Main content grows, with left margin to avoid sidebar on desktop */}
       <main
         className="
           flex-1
