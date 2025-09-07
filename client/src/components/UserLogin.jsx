@@ -36,8 +36,8 @@ export default function AuthForm() {
             };
 
         const url = isSignup
-            ? buildAPIUrls('/products/user/signup')
-            : buildAPIUrls('/products/user/login');
+            ? buildAPIUrls('/user/signup')
+            : buildAPIUrls('/user/login');
 
         try {
             const response = await fetch(url, {

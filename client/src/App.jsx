@@ -15,6 +15,7 @@ import Dashboard from './admin/components/SellerDashboard';
 import ProductList from './admin/components/ProductList';
 import ProtectedRoute from './admin/ProtectedRoute';
 import buildAPIUrls from './utils/helper';
+import CartPage from './components/CartPage';
 
 function App() {
   const [productCategory, setproductCategory] = useState([]);
@@ -24,7 +25,7 @@ function App() {
     const data = await fetch(url);
     const parsedData = await data.json();
 
-    setproductCategory(parsedData);    
+    setproductCategory(parsedData);
   };
 
   useEffect(() => {
@@ -40,14 +41,16 @@ function App() {
 
 function AppContent({ category }) {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const hideNavbarRoutes = ['/admin', '/cart'];
+  const shouldHideNavbar = hideNavbarRoutes.some(route => location.pathname.startsWith(route));
 
   return (
     <>
-      {!isAdminRoute && <NavBar category={category} />}
+      {!shouldHideNavbar && <NavBar category={category} />}
       <Routes>
         {/* Public Routes */}
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path='/cart' element={<CartPage />} />
         <Route path="/product/:category" element={<Products />} />
         <Route path="/products" element={<Products />} />
         <Route path="/" element={<Products />} />

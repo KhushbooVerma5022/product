@@ -8,18 +8,18 @@ class DashboardController {
         try {
             const productCountByCategory = await Product.aggregate([
                 {
-                    $match: { sellerId: new mongo.ObjectId(sellerId) } // filter by sellerId first
+                    $match: { sellerId: new mongo.ObjectId(sellerId) } 
                 },
                 {
                     $group: {
-                        _id: "$category",        // group by category field
-                        count: { $sum: 1 }       // count documents
+                        _id: "$category",        
+                        count: { $sum: 1 }      
                     }
                 },
                 {
                     $project: {
-                        _id: 0,                  // remove _id field
-                        category: "$_id",        // rename _id to category
+                        _id: 0,                 
+                        category: "$_id",       
                         count: 1
                     }
                 },

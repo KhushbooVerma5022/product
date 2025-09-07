@@ -196,6 +196,7 @@ class ProductController {
             res.json(categories);
 
         } catch (error) {
+            console.log("inside catch", error)
             res.status(500).json({ message: error.message });
         }
     }

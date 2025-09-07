@@ -37,16 +37,17 @@ export default function Navbar({ category }) {
             <nav className="bg-white shadow-md fixed top-0 z-50 w-full">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                     <div className="flex justify-between items-center h-16">
-
                         <div className="flex items-center space-x-2 font-bold text-2xl text-blue-600">
                             <FaShoppingCart className="text-blue-600 text-3xl transition-transform duration-300 hover:scale-110 hover:text-green-400" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-2xl sm:text-3xl md:text-4xl transition duration-500 hover:scale-105 hover:rotate-6">
+                            <span
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-2xl sm:text-3xl md:text-4xl transition duration-500 hover:scale-105 hover:rotate-6 cursor-pointer"
+                                onClick={() => navigate('/')}
+                            >
                                 GoShopz
                             </span>
                         </div>
 
                         <div className="hidden md:flex items-center space-x-4">
-
                             <div className="relative border border-gray-300 rounded-lg shadow-sm">
                                 <input
                                     type="search"
@@ -74,17 +75,26 @@ export default function Navbar({ category }) {
                             </select>
 
                             {username ? (
-                                <div className="flex items-center space-x-2 mx-4">
+                                <div className="flex items-center space-x-4 mx-4">
+                                    <button
+                                        onClick={() => navigate('/cart')}
+                                        className="text-2xl text-gray-700 hover:text-blue-600 transition"
+                                        title="Go to Cart"
+                                    >
+                                        <FaShoppingCart />
+                                    </button>
+
                                     <div
                                         className="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-semibold text-lg"
                                         title={username}
                                     >
                                         {userInitial}
                                     </div>
+
                                     <button
                                         onClick={() => {
-                                            localStorage.clear(); // or just remove 'Usertoken' and 'username'
-                                            navigate('/user'); // redirect to login
+                                            localStorage.clear();
+                                            navigate('/user');
                                         }}
                                         className="text-red-600 hover:text-red-800 font-medium"
                                     >
@@ -99,7 +109,6 @@ export default function Navbar({ category }) {
                                     Login
                                 </button>
                             )}
-
 
                             <button
                                 onClick={() => navigate(`/sellerhub`)}
@@ -119,7 +128,6 @@ export default function Navbar({ category }) {
                         </div>
                     </div>
 
-                    {/* Mobile Menu */}
                     {mobileMenuOpen && (
                         <div className="md:hidden px-4 pb-4 space-y-2 bg-white shadow-md">
                             <div className="flex items-center border border-gray-300 rounded-md">
@@ -147,6 +155,19 @@ export default function Navbar({ category }) {
                                     <option key={idx}>{cat}</option>
                                 ))}
                             </select>
+
+                            {username && (
+                                <button
+                                    onClick={() => {
+                                        navigate('/cart');
+                                        setMobileMenuOpen(false);
+                                    }}
+                                    className="flex items-center gap-2 text-gray-700 hover:text-blue-600 w-full"
+                                >
+                                    <FaShoppingCart />
+                                    <span>View Cart</span>
+                                </button>
+                            )}
 
                             {username ? (
                                 <div className="flex items-center justify-between w-full px-2">
@@ -178,8 +199,6 @@ export default function Navbar({ category }) {
                                     Login
                                 </button>
                             )}
-
-
 
                             <button
                                 onClick={() => navigate(`/admin`)}
